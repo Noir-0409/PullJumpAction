@@ -9,6 +9,24 @@ public class PullingJump : MonoBehaviour
     private Vector3 clickPosition;
     [SerializeField]
     private float jumpPower = 10;
+    private bool isCanJump;
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        Debug.Log("衝突した");
+    }
+
+    private void OnCollisionStay(Collision collision)
+    {
+        //Debug.Log("接触中");
+        isCanJump = true;
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        //Debug.Log("離脱した");
+        isCanJump = false;
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -36,7 +54,7 @@ public class PullingJump : MonoBehaviour
 
         }
 
-        if (Input.GetMouseButtonUp(0))
+        if (isCanJump && Input.GetMouseButtonUp(0))
         {
 
             // クリックした座標と離した座標の差分を取得
