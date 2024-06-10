@@ -5,6 +5,8 @@ using UnityEngine;
 public class ItemScript : MonoBehaviour
 {
 
+    private Animator animator;
+
     private void DestroySelf()
     {
 
@@ -15,8 +17,9 @@ public class ItemScript : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
 
-        DestroySelf();
+        //DestroySelf();
         //Debug.Log("Enter");
+        animator.SetTrigger("Get");
 
     }
 
@@ -37,8 +40,12 @@ public class ItemScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
+        animator = GetComponent<Animator>();
+
     }
+
+   
 
     // Update is called once per frame
     void Update()
