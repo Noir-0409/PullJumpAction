@@ -6,6 +6,7 @@ public class ItemScript : MonoBehaviour
 {
 
     private Animator animator;
+   private AudioSource audioSource;
 
     private void DestroySelf()
     {
@@ -14,12 +15,30 @@ public class ItemScript : MonoBehaviour
 
     }
 
+    // Start is called before the first frame update
+    void Start()
+    {
+
+        animator = GetComponent<Animator>();
+        audioSource = gameObject.GetComponent<AudioSource>();
+
+    }
+
+   
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
+
     private void OnTriggerEnter(Collider other)
     {
 
         //DestroySelf();
         //Debug.Log("Enter");
         animator.SetTrigger("Get");
+        audioSource.Play();
 
     }
 
@@ -35,21 +54,5 @@ public class ItemScript : MonoBehaviour
 
         Debug.Log("Exit");
 
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-
-        animator = GetComponent<Animator>();
-
-    }
-
-   
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
